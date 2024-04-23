@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form onsubmit="event.preventDefault();">
+        <p>Please enter numbers between 2 and 10</p>
+        <input type="number" id="begin">
+
+        <label for="multiplier">by</label>
+        <input type="number" name="multiplier" id="end"><br><br>
+        <button onclick="multiTable()">Enter</button>
+        
+    </form><br>
+
+    <div id="table"></div>
+    <p id="table"></p>
+   
+</body>
+<script>
+
+    function generatorTable(firstnum, secnum) {
+        var maintable = "<table>";
+        for (var b = 1; b <= firstnum; b++) {
+            maintable += "<tr>";
+            for (var a = 1; a <= secnum; a++) {
+                maintable += "<td>" + (b * a) + "</td>";
+            }
+                maintable += "</tr>";
+        }
+        maintable += "</table>";
+        document.getElementById('table').innerHTML = maintable;
+    }
+           
+
+    function multiTable(){
+        var firstnum = parseInt(document.getElementById('begin').value);
+        var secnum = parseInt(document.getElementById('end').value);
+
+        if (isNaN(firstnum) || isNaN(secnum) || firstnum < 2 || firstnum > 10 || secnum < 2 || secnum > 10)  {
+            alert('HEYY!! Please enter numbers between 2 and 10');        
+            return;
+            }
+            else{
+            generatorTable(firstnum, secnum);
+            }
+    }
+
+      
+ 
+</script>
+</html>
